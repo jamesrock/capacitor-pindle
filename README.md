@@ -1,10 +1,8 @@
-# pindle
+## pindle
 
-Created using [`@capacitor/create-app`](https://github.com/ionic-team/create-capacitor-app).
+Built using [Capacitor](https://capacitorjs.com) with support from [Vite](https://vitejs.dev/).
 
-wordle x mastermind
-
-```bash
-npm start
-```
-Runs on http://localhost:5173
+`npm run start`  
+`npm run build`  
+`npx cap sync`  
+`npx cap open ios`  
