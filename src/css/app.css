@@ -1,3 +1,7 @@
+:root {
+  --size: 40px;
+}
+
 * {
   padding: 0;
   margin: 0;
@@ -10,11 +14,14 @@ body {
 .selection {
   display: flex;
   gap: 10px;
+  &[data-solved="false"] {
+    opacity: 0;
+  }
 }
 
 .pin {
-  width: 30px;
-  height: 30px;
+  width: var(--size);
+  height: var(--size);
   border-radius: 100%;
   box-sizing: border-box;
   border: solid 2px white;
@@ -38,6 +45,26 @@ body {
   &.red {
     background-color: red;
     border-color: red;
+  }
+  &.crimson {
+    background-color: crimson;
+    border-color: crimson;
+  }
+  &.salmon {
+    background-color: salmon;
+    border-color: salmon;
+  }
+  &.chartreuse {
+    background-color: chartreuse;
+    border-color: chartreuse;
+  }
+  &.cyan {
+    background-color: cyan;
+    border-color: cyan;
+  }
+  &.magenta {
+    background-color: magenta;
+    border-color: magenta;
   }
   &.empty {
     border-color: grey;
@@ -63,6 +90,8 @@ body {
 
 .buttons {
   display: flex;
+  flex-wrap: wrap;
+  width: 240px;
   gap: 10px;
 
   .pin {

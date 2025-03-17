@@ -13,13 +13,19 @@ class Pindle {
     'blue',
     'green',
     'orange',
-    'red'
+    'red',
+    'crimson',
+    'salmon',
+    'chartreuse',
+    'cyan',
+    'magenta'
   ];
   numberOfPinsInCode = 5;
   numberOfEachColor = 5;
   numberOfAttempts = 6;
   attemptIndex = 0;
   attemptPinIndex = 0;
+  solved = false;
   makePins() {
 
     const out = [];
@@ -74,16 +80,21 @@ class Pindle {
   };
   checkAttempt() {
     console.log('checkAttempt', this.attempts[this.attemptIndex], this.selection);
+    let correct = 0;
     this.attempts[this.attemptIndex].forEach((pin, i) => {
       let state = 'incorrect';
       if(this.selection[i].color === pin.color) {
         state = 'correct';
+        correct ++;
       }
       else if(this.selection.map((pinToMap) => {return pinToMap.color}).includes(pin.color)) {
         state = 'wrong-spot';
       };
       pin.setState(state);
     });
+    if(correct===5) {
+      this.solved = true;
+    };
   };
 };
 
@@ -114,7 +125,7 @@ const makeAttempt = (attempt) => {
 
 const render = () => {
   let markup = `<div class="board">`;
-  markup += `<div class="selection">${pindle.selection.map((pin) => {return `<div class="pin selected ${pin.color}"></div>`}).join('')}</div>`;
+  markup += `<div class="selection" data-solved=${pindle.solved}>${pindle.selection.map((pin) => {return `<div class="pin selected ${pin.color}"></div>`}).join('')}</div>`;
   markup += `<div class="attempts">${pindle.attempts.map((attempt) => {return `<div class="attempt">${makeAttempt(attempt)}</div>`}).join('')}</div>`;
   markup += `<div class="buttons">${pindle.colors.map((color) => {return `<div data-color="${color}" class="pin button ${color}"></div>`}).join('')}</div>`;
   markup += `</div>`;
