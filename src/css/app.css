@@ -23,15 +23,20 @@ body {
   box-sizing: border-box;
 }
 
+h2 {
+  text-transform: uppercase;
+}
+
 .board {
   display: flex;
   flex-direction: column;
   gap: var(--board-gap);
+  position: relative;
 }
 
 .selection {
   display: flex;
-  display: none;
+  // display: none;
   gap: var(--gap);
 }
 
@@ -144,4 +149,25 @@ body {
   color: var(--background-color);
   text-shadow: 1px 1px 1px rgba(0,0,0,0.25);
   font-weight: bold;
+}
+
+.game-over {
+  position: absolute;
+  inset: -5px;
+  display: flex;
+  justify-content: center;
+  padding-top: 100px;
+  text-align: center;
+
+  .game-over-body {
+    display: flex;
+    pointer-events: none;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+}
+
+[data-gameover="true"] {
+  opacity: 0.1;
 }
