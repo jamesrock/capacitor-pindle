@@ -154,7 +154,7 @@ const smallSize = (size - 10);
 const gap = 11;
 const boardGap = 30;
 const pindle = new Pindle();
-console.log(pindle);
+// console.log(pindle);
 
 const makeAttempt = (attempt) => {
   return attempt.map((pin) => {
@@ -179,7 +179,7 @@ const render = () => {
       <div class="game-over-body">\
         <div>\
           <h2>GAME OVER</h2>\
-          <p>Press to try again.</p>\
+          <p>Tap to try again.</p>\
         </div>\
         ${getGameOverSelection()}\
       </div>\
@@ -189,7 +189,7 @@ const render = () => {
         <div>
           <h2>Well done!</h2>\
           <p>You solved the puzzle in ${pindle.attemptIndex} ${pindle.attemptIndex===1 ? 'try' : 'tries'}!</p>\
-          <p>Press to try again.</p>\
+          <p>Tap to try again.</p>\
         </div>\
         ${getGameOverSelection()}\
       </div>\
