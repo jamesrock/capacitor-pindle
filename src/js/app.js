@@ -1,3 +1,4 @@
+import { SplashScreen } from '@capacitor/splash-screen';
 import { ROCK_MATH } from './ROCK.js';
 
 class Pindle {
@@ -183,3 +184,5 @@ document.addEventListener('click', (e) => {
 root.style.setProperty('--size', `${size}px`);
 root.style.setProperty('--gap', `${gap}px`);
 root.style.setProperty('--board-gap', `${boardGap}px`);
+
+SplashScreen.hide();
