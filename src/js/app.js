@@ -143,7 +143,6 @@ const root = document.querySelector(':root');
 const size = 50;
 const gap = 11;
 const boardGap = 30;
-
 const pindle = new Pindle();
 console.log(pindle);
 
@@ -162,12 +161,8 @@ const render = () => {
     markup += `<div class="buttons" style="width: ${(size*5)+(gap*4)}px">${pindle.buttons.map((pin) => {return `<div data-color="${pin.color}" data-state="${pin.state}" class="pin button ${pin.color}"></div>`}).join('')}</div>`;
     markup += `<div class="foot">pindle</div>`;
   markup += `</div>`;
-  if(pindle.checkGaneOver()) {
-    markup += `<div class="game-over"><div class="game-over-body"><h2>GAME OVER</h2><p>Press to try again.</p></div></div>`;
-  };
-  if(pindle.solved) {
-    markup += `<div class="game-over"><div class="game-over-body"><h2>Well done!</h2><p>You solved the puzzle in ${pindle.attemptIndex} tries!</p><p>Press to try again.</p></div></div>`;
-  };
+  markup += `<div class="game-over" data-show="${pindle.checkGaneOver()}"><div class="game-over-body"><h2>GAME OVER</h2><p>Press to try again.</p></div></div>`;
+  markup += `<div class="game-over" data-show="${pindle.solved}"><div class="game-over-body"><h2>Well done!</h2><p>You solved the puzzle in ${pindle.attemptIndex} tries!</p><p>Press to try again.</p></div></div>`;
   markup += `</div>`;
   document.body.innerHTML = markup;
 };
