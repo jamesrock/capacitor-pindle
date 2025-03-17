@@ -22,12 +22,16 @@ body {
   justify-content: center;
 }
 
+.board {
+  display: flex;
+  flex-direction: column;
+  gap: var(--board-gap);
+}
+
 .selection {
   display: flex;
+  display: none;
   gap: var(--gap);
-  &[data-solved="false"] {
-    opacity: 0;
-  }
 }
 
 .pin {
@@ -103,16 +107,9 @@ body {
   display: flex;
   flex-wrap: wrap;
   gap: var(--gap);
-
-  .pin {
+  .button {
     cursor: pointer;
   }
-}
-
-.board {
-  display: flex;
-  flex-direction: column;
-  gap: var(--gap);
 }
 
 .attempts {
@@ -126,9 +123,14 @@ body {
   gap: var(--gap);
 }
 
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+}
+
 .foot {
   text-align: center;
-  padding-top: 5px;
   font-size: 32px;
   color: var(--background-color);
   text-shadow: 1px 1px 1px rgba(0,0,0,0.2);
