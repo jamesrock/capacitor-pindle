@@ -52,34 +52,34 @@ h2 {
   border-radius: 100%;
   box-sizing: border-box;
   box-shadow: inset 0px -5px 5px rgba(0, 0, 0, 0.25);
-  &.color0 {
+  &[data-color="color0"] {
     background-color: #66c5cc;
   }
-  &.color1 {
+  &[data-color="color1"] {
     background-color: teal;
   }
-  &.color2 {
+  &[data-color="color2"] {
     background-color: #f6cf71;
   }
-  &.color3 {
+  &[data-color="color3"] {
     background-color: #fe88b1;
   }
-  &.color4 {
+  &[data-color="color4"] {
     background-color: indianred;
   }
-  &.color5 {
+  &[data-color="color5"] {
     background-color: #b497e7;
   }
-  &.color6 {
+  &[data-color="color6"] {
     background-color: salmon;
   }
-  &.color7 {
+  &[data-color="color7"] {
     background-color: rgb(74, 242, 186);
   }
-  &.color8 {
+  &[data-color="color8"] {
     background-color: cornflowerblue;
   }
-  &.color9 {
+  &[data-color="color9"] {
     background-color: #87c55f;
   }
   &[data-state="empty"] {

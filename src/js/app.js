@@ -1,6 +1,14 @@
 import { SplashScreen } from '@capacitor/splash-screen';
 import { ROCK_MATH } from './ROCK.js';
 
+const shuffle = (items) => {
+  for (let i = 0; i < items.length; i++) {
+    let shuffle = Math.floor(Math.random() * (items.length));
+    [items[i], items[shuffle]] = [items[shuffle], items[i]];
+  };
+  return items;
+};
+
 class Pindle {
   constructor() {
 
@@ -15,7 +23,7 @@ class Pindle {
         out.push(new Pin(color));
       };
     });
-    return out;
+    return shuffle(out);
 
   };
   makeSelection() {
@@ -149,21 +157,21 @@ console.log(pindle);
 
 const makeAttempt = (attempt) => {
   return attempt.map((pin) => {
-    return `<div class="pin ${pin.color}" data-state="${pin.state}"></div>`;
+    return `<div class="pin" data-color="${pin.color}" data-state="${pin.state}"></div>`;
   }).join('');
 };
 
 const render = () => {
   const gameover = pindle.solved || pindle.checkGaneOver();
   let markup = `<div class="board">`;
-  markup += `<div class="selection" data-solved=${pindle.solved}>${pindle.selection.map((pin) => {return `<div class="pin selected ${pin.color}"></div>`}).join('')}</div>`;
+  markup += `<div class="selection" data-solved=${pindle.solved}>${pindle.selection.map((pin) => {return `<div class="pin" data-color="${pin.color}"></div>`}).join('')}</div>`;
   markup += `<div class="attempts" data-gameover=${gameover}>${pindle.attempts.map((attempt) => {return `<div class="attempt">${makeAttempt(attempt)}</div>`}).join('')}</div>`;
   markup += `<div class="controls" data-gameover=${gameover}>`;
-    markup += `<div class="buttons" style="width: ${(size*5)+(gap*4)}px">${pindle.buttons.map((pin) => {return `<div data-color="${pin.color}" data-state="${pin.state}" class="pin button ${pin.color}"></div>`}).join('')}</div>`;
+    markup += `<div class="buttons" style="width: ${(size*5)+(gap*4)}px">${pindle.buttons.map((pin) => {return `<div data-color="${pin.color}" data-state="${pin.state}" class="pin button"></div>`}).join('')}</div>`;
     markup += `<div class="foot">pindle</div>`;
   markup += `</div>`;
   markup += `<div class="game-over" data-show="${pindle.checkGaneOver()}"><div class="game-over-body"><h2>GAME OVER</h2><p>Press to try again.</p></div></div>`;
-  markup += `<div class="game-over" data-show="${pindle.solved}"><div class="game-over-body"><h2>Well done!</h2><p>You solved the puzzle in ${pindle.attemptIndex} tries!</p><p>Press to try again.</p></div></div>`;
+  markup += `<div class="game-over" data-show="${pindle.solved}"><div class="game-over-body"><h2>Well done!</h2><p>You solved the puzzle in ${pindle.attemptIndex} ${pindle.attemptIndex===1 ? 'try' : 'tries'}!</p><p>Press to try again.</p></div></div>`;
   markup += `</div>`;
   document.body.innerHTML = markup;
 };
