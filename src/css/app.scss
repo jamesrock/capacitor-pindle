@@ -54,43 +54,33 @@ h2 {
   box-shadow: inset 0px -5px 5px rgba(0, 0, 0, 0.25);
   &.color0 {
     background-color: #66c5cc;
-    border-color: #66c5cc;
   }
   &.color1 {
     background-color: teal;
-    border-color: teal;
   }
   &.color2 {
     background-color: #f6cf71;
-    border-color: #f6cf71;
   }
   &.color3 {
     background-color: #fe88b1;
-    border-color: #fe88b1;
   }
   &.color4 {
-    background-color: rgb(254, 52, 52);
-    border-color: rgb(254, 52, 52);
+    background-color: indianred;
   }
   &.color5 {
     background-color: #b497e7;
-    border-color: #b497e7;
   }
   &.color6 {
     background-color: salmon;
-    border-color: salmon;
   }
   &.color7 {
     background-color: rgb(74, 242, 186);
-    border-color: rgb(74, 242, 186);
   }
   &.color8 {
     background-color: cornflowerblue;
-    border-color: cornflowerblue;
   }
   &.color9 {
     background-color: #87c55f;
-    border-color: #87c55f;
   }
   &[data-state="empty"] {
     border: solid 2px rgb(203, 203, 203);
@@ -110,11 +100,6 @@ h2 {
   }
   &[data-state="incorrect"] {
     outline-color: rgb(237, 12, 12);
-  }
-  &.button,
-  &.selected {
-    border: 0;
-    outline: 0;
   }
 }
 
