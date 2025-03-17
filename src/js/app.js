@@ -5,17 +5,21 @@ class Pindle {
 
     this.pins = this.makePins();
     this.selection = this.makeSelection();
+    this.attempts = this.makeAttempts();
 
   };
   colors = [
-    ['pink', '#fed91c'],
-    ['blue', '#b131ed'],
-    ['green', '#0e6cef'],
-    ['orange', '#ff8300'],
-    ['red', '#25ccfd']
+    'pink',
+    'blue',
+    'green',
+    'orange',
+    'red'
   ];
   numberOfPinsInCode = 5;
   numberOfEachColor = 5;
+  numberOfAttempts = 6;
+  attemptIndex = 0;
+  attemptPinIndex = 0;
   makePins() {
 
     const out = [];
@@ -38,6 +42,39 @@ class Pindle {
     return out;
 
   };
+  makeAttempts() {
+    
+    const out = [];
+    for(var i=0;i<this.numberOfAttempts;i++) {
+      const attempt = [];
+      for(var bob=0;bob<this.numberOfPinsInCode;bob++) {
+        attempt.push(new Pin('empty'));
+      };
+      out.push(attempt);
+    };
+
+    return out;
+
+  };
+  addAttempt(color) {
+    
+    this.attempts[this.attemptIndex][this.attemptPinIndex].setColor(color);
+    
+    if(this.attemptPinIndex < (this.numberOfPinsInCode - 1)) {
+      this.attemptPinIndex ++;
+    }
+    else {
+      this.checkAttempt();
+      this.attemptIndex ++;
+      this.attemptPinIndex = 0;
+    };
+    
+    return this;
+
+  };
+  checkAttempt() {
+    console.log('checkAttempt', this.attempts[this.attemptIndex], this.selection);
+  };
 };
 
 class Pin {
@@ -46,12 +83,39 @@ class Pin {
   ) {
     this.color = color;
   };
-  color = '#000';
+  color = 'empty';
+  state = 'pin';
+  setState(state) {
+    this.state = state;
+  };
+  setColor(color) {
+    this.color = color;
+  };
 };
 
 const pindle = new Pindle();
 console.log(pindle);
 
-let markup = `<div class="selection">${pindle.selection.map((pin) => {return `<div class="pin ${pin.color[0]}"></div>`}).join('')}</div>`;
+const makeAttempt = (attempt) => {
+  return attempt.map((pin) => {
+    return `<div class="pin ${pin.color}" data-state="${pin.state}"></div>`;
+  }).join('');
+};
 
-document.body.innerHTML = markup;
+const render = () => {
+  let markup = `<div class="board">`;
+  markup += `<div class="selection">${pindle.selection.map((pin) => {return `<div class="pin ${pin.color}"></div>`}).join('')}</div>`;
+  markup += `<div class="attempts">${pindle.attempts.map((attempt) => {return `<div class="attempt">${makeAttempt(attempt)}</div>`}).join('')}</div>`;
+  markup += `<div class="buttons">${pindle.colors.map((color) => {return `<div data-color="${color}" class="pin button ${color}"></div>`}).join('')}</div>`;
+  markup += `</div>`;
+  document.body.innerHTML = markup;
+};
+
+render();
+
+document.addEventListener('click', (e) => {
+  if(e.target.classList.contains('button')) {
+    pindle.addAttempt(e.target.getAttribute('data-color'));
+    render();
+  };
+});

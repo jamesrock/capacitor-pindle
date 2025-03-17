@@ -13,22 +13,67 @@ body {
 }
 
 .pin {
-  width: 20px;
-  height: 20px;
+  width: 30px;
+  height: 30px;
   border-radius: 100%;
+  box-sizing: border-box;
+  border: solid 2px white;
   &.pink {
     background-color: pink;
+    border-color: pink;
   }
   &.blue {
     background-color: blue;
+    border-color: blue;
   }
   &.green {
     background-color: green;
+    border-color: green;
   }
   &.orange {
     background-color: orange;
+    border-color: orange;
   }
   &.red {
     background-color: red;
+    border-color: red;
   }
+  &.empty {
+    border-color: grey;
+  }
+  &[data-state="correct"] {
+    border-color: green;
+  }
+  &[data-state="wrong-spot"] {
+    border-color: orange;
+  }
+  &[data-state="incorrect"] {
+    border-color: red;
+  }
+}
+
+.buttons {
+  display: flex;
+  gap: 5px;
+
+  .pin {
+    cursor: pointer;
+  }
+}
+
+.board {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.attempts {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.attempt {
+  display: flex;
+  gap: 5px;
 }
