@@ -41,43 +41,43 @@ body {
   box-sizing: border-box;
   border: solid 3px transparent;
   outline: solid 3px transparent;
-  &.pink {
+  &.color0 {
     background-color: pink;
     border-color: pink;
   }
-  &.blue {
+  &.color1 {
     background-color: blue;
     border-color: blue;
   }
-  &.green {
+  &.color2 {
     background-color: green;
     border-color: green;
   }
-  &.orange {
+  &.color3 {
     background-color: orange;
     border-color: orange;
   }
-  &.red {
+  &.color4 {
     background-color: red;
     border-color: red;
   }
-  &.crimson {
+  &.color5 {
     background-color: crimson;
     border-color: crimson;
   }
-  &.salmon {
+  &.color6 {
     background-color: salmon;
     border-color: salmon;
   }
-  &.chartreuse {
+  &.color7 {
     background-color: chartreuse;
     border-color: chartreuse;
   }
-  &.cyan {
+  &.color8 {
     background-color: cyan;
     border-color: cyan;
   }
-  &.magenta {
+  &.color9 {
     background-color: magenta;
     border-color: magenta;
   }
@@ -109,6 +109,10 @@ body {
   gap: var(--gap);
   .button {
     cursor: pointer;
+    &[data-state="disabled"] {
+      pointer-events: none;
+      background-color: gainsboro;
+    }
   }
 }
 

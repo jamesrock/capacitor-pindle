@@ -6,19 +6,20 @@ class Pindle {
     this.pins = this.makePins();
     this.selection = this.makeSelection();
     this.attempts = this.makeAttempts();
+    this.buttons = this.makeButtons();
 
   };
   colors = [
-    'pink',
-    'blue',
-    'green',
-    'orange',
-    'red',
-    'crimson',
-    'salmon',
-    'chartreuse',
-    'cyan',
-    'magenta'
+    'color0',
+    'color1',
+    'color2',
+    'color3',
+    'color4',
+    'color5',
+    'color6',
+    'color7',
+    'color8',
+    'color9'
   ];
   numberOfPinsInCode = 5;
   numberOfEachColor = 5;
@@ -62,6 +63,13 @@ class Pindle {
     return out;
 
   };
+  makeButtons() {
+    
+    return this.colors.map((color) => {
+      return new Pin(color);
+    });
+
+  };
   addAttempt(color) {
     
     this.attempts[this.attemptIndex][this.attemptPinIndex].setColor(color);
@@ -91,6 +99,11 @@ class Pindle {
         state = 'wrong-spot';
       };
       pin.setState(state);
+      if(state==='incorrect') {
+        this.buttons.filter((button) => {
+          return button.color === pin.color;
+        })[0].setState('disabled');
+      };
     });
     if(correct===5) {
       this.solved = true;
@@ -133,7 +146,7 @@ const render = () => {
   markup += `<div class="selection" data-solved=${pindle.solved}>${pindle.selection.map((pin) => {return `<div class="pin selected ${pin.color}"></div>`}).join('')}</div>`;
   markup += `<div class="attempts">${pindle.attempts.map((attempt) => {return `<div class="attempt">${makeAttempt(attempt)}</div>`}).join('')}</div>`;
   markup += `<div class="controls">`;
-  markup += `<div class="buttons" style="width: ${(size*5)+(gap*4)}px">${pindle.colors.map((color) => {return `<div data-color="${color}" class="pin button ${color}"></div>`}).join('')}</div>`;
+  markup += `<div class="buttons" style="width: ${(size*5)+(gap*4)}px">${pindle.buttons.map((pin) => {return `<div data-color="${pin.color}" data-state="${pin.state}" class="pin button ${pin.color}"></div>`}).join('')}</div>`;
   markup += `<div class="foot">pindle</div>`;
   markup += `</div>`;
   markup += `</div>`;
