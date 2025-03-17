@@ -56,7 +56,7 @@ h2 {
     background-color: #7bc5cd;
   }
   &[data-color="color1"] {
-    background-color: rgb(255, 177, 50);
+    background-color: tan;
   }
   &[data-color="color2"] {
     background-color: #fe88b1;
@@ -71,7 +71,7 @@ h2 {
     background-color: #b497e7;
   }
   &[data-color="color6"] {
-    background-color: salmon;
+    background-color: papayawhip;
   }
   &[data-color="color7"] {
     background-color: rgb(74, 242, 186);
@@ -101,6 +101,10 @@ h2 {
   &[data-state="incorrect"] {
     outline-color: rgb(237, 12, 12);
   }
+  &.small {
+    width: var(--small-size);
+    height: var(--small-size);
+  }
 }
 
 .buttons {
@@ -113,6 +117,9 @@ h2 {
       pointer-events: none;
       background-color: gainsboro;
       box-shadow: inset 0 3px 3px rgba(0, 0, 0, 0.2);
+    }
+    &:active {
+      transform: scale(0.9);
     }
   }
 }
@@ -147,18 +154,24 @@ h2 {
   inset: -5px;
   display: flex;
   justify-content: center;
-  padding-top: 100px;
+  padding: 100px 10px;
   text-align: center;
 
   .game-over-body {
     display: flex;
     pointer-events: none;
     flex-direction: column;
-    gap: 10px;
+    gap: 30px;
   }
 
   &[data-show="false"] {
     display: none;
+  }
+
+  .gameover-selection {
+    display: flex;
+    gap: var(--gap);
+    justify-content: center;
   }
   
 }

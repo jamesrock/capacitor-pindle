@@ -150,6 +150,7 @@ class Pin {
 
 const root = document.querySelector(':root');
 const size = 50;
+const smallSize = (size - 10);
 const gap = 11;
 const boardGap = 30;
 const pindle = new Pindle();
@@ -161,18 +162,39 @@ const makeAttempt = (attempt) => {
   }).join('');
 };
 
+const getGameOverSelection = () => {
+  return `<div class="gameover-selection">${pindle.selection.map((pin) => {return `<div class="pin small" data-color="${pin.color}"></div>`}).join('')}</div>`;
+};
+
 const render = () => {
   const gameover = pindle.solved || pindle.checkGaneOver();
-  let markup = `<div class="board">`;
-  markup += `<div class="selection" data-solved=${pindle.solved}>${pindle.selection.map((pin) => {return `<div class="pin" data-color="${pin.color}"></div>`}).join('')}</div>`;
-  markup += `<div class="attempts" data-gameover=${gameover}>${pindle.attempts.map((attempt) => {return `<div class="attempt">${makeAttempt(attempt)}</div>`}).join('')}</div>`;
-  markup += `<div class="controls" data-gameover=${gameover}>`;
-    markup += `<div class="buttons" style="width: ${(size*5)+(gap*4)}px">${pindle.buttons.map((pin) => {return `<div data-color="${pin.color}" data-state="${pin.state}" class="pin button"></div>`}).join('')}</div>`;
-    markup += `<div class="foot">pindle</div>`;
-  markup += `</div>`;
-  markup += `<div class="game-over" data-show="${pindle.checkGaneOver()}"><div class="game-over-body"><h2>GAME OVER</h2><p>Press to try again.</p></div></div>`;
-  markup += `<div class="game-over" data-show="${pindle.solved}"><div class="game-over-body"><h2>Well done!</h2><p>You solved the puzzle in ${pindle.attemptIndex} ${pindle.attemptIndex===1 ? 'try' : 'tries'}!</p><p>Press to try again.</p></div></div>`;
-  markup += `</div>`;
+  let markup = `<div class="board">\
+    <div class="selection" data-solved=${pindle.solved}>${pindle.selection.map((pin) => {return `<div class="pin" data-color="${pin.color}"></div>`}).join('')}</div>\
+    <div class="attempts" data-gameover=${gameover}>${pindle.attempts.map((attempt) => {return `<div class="attempt">${makeAttempt(attempt)}</div>`}).join('')}</div>\
+    <div class="controls" data-gameover=${gameover}>\
+      <div class="buttons" style="width: ${(size*5)+(gap*4)}px">${pindle.buttons.map((pin) => {return `<div data-color="${pin.color}" data-state="${pin.state}" class="pin button"></div>`}).join('')}</div>\
+      <div class="foot">pindle</div>\
+    </div>\
+    <div class="game-over" data-show="${pindle.checkGaneOver()}">\
+      <div class="game-over-body">\
+        <div>\
+          <h2>GAME OVER</h2>\
+          <p>Press to try again.</p>\
+        </div>\
+        ${getGameOverSelection()}\
+      </div>\
+    </div>\
+    <div class="game-over" data-show="${pindle.solved}">\
+      <div class="game-over-body">\
+        <div>
+          <h2>Well done!</h2>\
+          <p>You solved the puzzle in ${pindle.attemptIndex} ${pindle.attemptIndex===1 ? 'try' : 'tries'}!</p>\
+          <p>Press to try again.</p>\
+        </div>\
+        ${getGameOverSelection()}\
+      </div>\
+    </div>\
+  </div>`;
   document.body.innerHTML = markup;
 };
 
@@ -190,6 +212,7 @@ document.addEventListener('click', (e) => {
 });
 
 root.style.setProperty('--size', `${size}px`);
+root.style.setProperty('--small-size', `${smallSize}px`);
 root.style.setProperty('--gap', `${gap}px`);
 root.style.setProperty('--board-gap', `${boardGap}px`);
 
