@@ -55,7 +55,7 @@ class Pindle {
     for(var i=0;i<this.numberOfAttempts;i++) {
       const attempt = [];
       for(var bob=0;bob<this.numberOfPinsInCode;bob++) {
-        attempt.push(new Pin('empty'));
+        attempt.push(new Pin('empty').setState('empty'));
       };
       out.push(attempt);
     };
@@ -72,7 +72,7 @@ class Pindle {
   };
   addAttempt(color) {
     
-    this.attempts[this.attemptIndex][this.attemptPinIndex].setColor(color);
+    this.attempts[this.attemptIndex][this.attemptPinIndex].setColor(color).setState('pin');
     
     if(this.attemptPinIndex < (this.numberOfPinsInCode - 1)) {
       this.attemptPinIndex ++;
@@ -87,7 +87,6 @@ class Pindle {
 
   };
   checkAttempt() {
-    // console.log('checkAttempt', this.attempts[this.attemptIndex], this.selection);
     let correct = 0;
     this.attempts[this.attemptIndex].forEach((pin, i) => {
       let state = 'incorrect';
@@ -121,15 +120,17 @@ class Pin {
   state = 'pin';
   setState(state) {
     this.state = state;
+    return this;
   };
   setColor(color) {
     this.color = color;
+    return this;
   };
 };
 
 const root = document.querySelector(':root');
 const size = 50;
-const gap = 10;
+const gap = 12;
 const boardGap = 30;
 
 const pindle = new Pindle();
