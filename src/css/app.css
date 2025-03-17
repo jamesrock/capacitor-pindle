@@ -9,7 +9,7 @@ body {
 
 .selection {
   display: flex;
-  gap: 5px;
+  gap: 10px;
 }
 
 .pin {
@@ -18,6 +18,7 @@ body {
   border-radius: 100%;
   box-sizing: border-box;
   border: solid 2px white;
+  outline: solid 2px white;
   &.pink {
     background-color: pink;
     border-color: pink;
@@ -42,19 +43,27 @@ body {
     border-color: grey;
   }
   &[data-state="correct"] {
-    border-color: green;
+    border-color: white;
+    outline-color: green;
   }
   &[data-state="wrong-spot"] {
-    border-color: orange;
+    border-color: white;
+    outline-color: orange;
   }
   &[data-state="incorrect"] {
-    border-color: red;
+    border-color: white;
+    outline-color: red;
+  }
+  &.button,
+  &.selected {
+    border: 0;
+    outline: 0;
   }
 }
 
 .buttons {
   display: flex;
-  gap: 5px;
+  gap: 10px;
 
   .pin {
     cursor: pointer;
@@ -64,7 +73,7 @@ body {
 .board {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 10px;
 }
 
 .attempts {
@@ -75,5 +84,5 @@ body {
 
 .attempt {
   display: flex;
-  gap: 5px;
+  gap: 10px;
 }
