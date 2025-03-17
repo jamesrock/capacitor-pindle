@@ -130,7 +130,7 @@ class Pin {
 
 const root = document.querySelector(':root');
 const size = 50;
-const gap = 12;
+const gap = 11;
 const boardGap = 30;
 
 const pindle = new Pindle();
