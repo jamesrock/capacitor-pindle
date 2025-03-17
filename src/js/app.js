@@ -114,6 +114,10 @@ class Pin {
   };
 };
 
+const root = document.querySelector(':root');
+const size = 50;
+const gap = 10;
+
 const pindle = new Pindle();
 console.log(pindle);
 
@@ -127,7 +131,7 @@ const render = () => {
   let markup = `<div class="board">`;
   markup += `<div class="selection" data-solved=${pindle.solved}>${pindle.selection.map((pin) => {return `<div class="pin selected ${pin.color}"></div>`}).join('')}</div>`;
   markup += `<div class="attempts">${pindle.attempts.map((attempt) => {return `<div class="attempt">${makeAttempt(attempt)}</div>`}).join('')}</div>`;
-  markup += `<div class="buttons">${pindle.colors.map((color) => {return `<div data-color="${color}" class="pin button ${color}"></div>`}).join('')}</div>`;
+  markup += `<div class="buttons" style="width: ${(size*5)+(gap*4)}px">${pindle.colors.map((color) => {return `<div data-color="${color}" class="pin button ${color}"></div>`}).join('')}</div>`;
   markup += `</div>`;
   document.body.innerHTML = markup;
 };
@@ -140,3 +144,6 @@ document.addEventListener('click', (e) => {
     render();
   };
 });
+
+root.style.setProperty('--size', `${size}px`);
+root.style.setProperty('--gap', `${gap}px`);

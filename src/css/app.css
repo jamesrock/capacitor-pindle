@@ -1,7 +1,3 @@
-:root {
-  --size: 40px;
-}
-
 * {
   padding: 0;
   margin: 0;
@@ -13,7 +9,7 @@ body {
 
 .selection {
   display: flex;
-  gap: 10px;
+  gap: var(--gap);
   &[data-solved="false"] {
     opacity: 0;
   }
@@ -24,8 +20,8 @@ body {
   height: var(--size);
   border-radius: 100%;
   box-sizing: border-box;
-  border: solid 2px white;
-  outline: solid 2px white;
+  border: solid 3px white;
+  outline: solid 3px white;
   &.pink {
     background-color: pink;
     border-color: pink;
@@ -71,15 +67,15 @@ body {
   }
   &[data-state="correct"] {
     border-color: white;
-    outline-color: green;
+    outline-color: rgb(57, 218, 25);
   }
   &[data-state="wrong-spot"] {
     border-color: white;
-    outline-color: orange;
+    outline-color: darkorange;
   }
   &[data-state="incorrect"] {
     border-color: white;
-    outline-color: red;
+    outline-color: rgb(237, 12, 12);
   }
   &.button,
   &.selected {
@@ -91,8 +87,7 @@ body {
 .buttons {
   display: flex;
   flex-wrap: wrap;
-  width: 240px;
-  gap: 10px;
+  gap: var(--gap);
 
   .pin {
     cursor: pointer;
@@ -102,16 +97,16 @@ body {
 .board {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: var(--gap);
 }
 
 .attempts {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: var(--gap);
 }
 
 .attempt {
   display: flex;
-  gap: 10px;
+  gap: var(--gap);
 }
