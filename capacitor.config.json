@@ -1,0 +1,10 @@
+{
+  "appId": "me.jamesrock.pindle",
+  "appName": "pindle",
+  "webDir": "dist",
+  "plugins": {
+    "SplashScreen": {
+      "launchAutoHide": false
+    }
+  }
+}
