@@ -1,10 +1,23 @@
+:root {
+  --background-color: white;
+}
+
 * {
   padding: 0;
   margin: 0;
 }
 
+html,
+body {
+  height: 100%;
+}
+
 body {
   padding: 10px;
+  background-color: var(--background-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .selection {
@@ -20,8 +33,8 @@ body {
   height: var(--size);
   border-radius: 100%;
   box-sizing: border-box;
-  border: solid 3px white;
-  outline: solid 3px white;
+  border: solid 3px transparent;
+  outline: solid 3px transparent;
   &.pink {
     background-color: pink;
     border-color: pink;
