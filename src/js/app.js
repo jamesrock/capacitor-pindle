@@ -1,5 +1,4 @@
 import { SplashScreen } from '@capacitor/splash-screen';
-import { ROCK_MATH } from './ROCK.js';
 
 const shuffle = (items) => {
   for (let i = 0; i < items.length; i++) {
@@ -30,7 +29,7 @@ class Pindle {
 
     const out = [];
     for(var i=0;i<this.numberOfPinsInCode;i++) {
-      const index = ROCK_MATH.random(0, (this.pins.length - 1));
+      const index = Math.floor(Math.random() * (this.pins.length));
       out.push(this.pins.splice(index, 1)[0]);
     };
 
