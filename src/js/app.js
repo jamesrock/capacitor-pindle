@@ -29,8 +29,7 @@ class Pindle {
 
     const out = [];
     for(var i=0;i<this.numberOfPinsInCode;i++) {
-      const index = Math.floor(Math.random() * (this.pins.length));
-      out.push(this.pins.splice(index, 1)[0]);
+      out.push(this.pins.splice(Math.floor(Math.random() * (this.pins.length)), 1)[0]);
     };
 
     return out;
