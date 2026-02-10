@@ -1,12 +1,5 @@
 import { SplashScreen } from '@capacitor/splash-screen';
-
-const shuffle = (items) => {
-  for (let i = 0; i < items.length; i++) {
-    let shuffle = Math.floor(Math.random() * (items.length));
-    [items[i], items[shuffle]] = [items[shuffle], items[i]];
-  };
-  return items;
-};
+import { shuffle } from '@jamesrock/rockjs';
 
 class Pindle {
   constructor() {
