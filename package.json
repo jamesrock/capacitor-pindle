@@ -1,12 +1,7 @@
 {
   "name": "capacitor-pindle",
   "version": "1.0.0",
-  "description": "wordle x mastermind",
   "type": "module",
-  "keywords": [
-    "capacitor",
-    "mobile"
-  ],
   "scripts": {
     "start": "vite",
     "build": "vite build",
@@ -16,12 +11,11 @@
     "@capacitor/core": "latest",
     "@capacitor/ios": "^7.1.0",
     "@capacitor/splash-screen": "latest",
-    "@jamesrock/rockjs": "^1.5.0",
-    "sass": "^1.85.1"
+    "@jamesrock/rockjs": "^1.9.0"
   },
   "devDependencies": {
     "@capacitor/cli": "latest",
-    "vite": "^5.4.2"
+    "vite": "^7.3.1"
   },
   "author": "James Rock",
   "license": "ISC"

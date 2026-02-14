@@ -1,3 +1,4 @@
+import '../css/app.css';
 import { SplashScreen } from '@capacitor/splash-screen';
 import { shuffle } from '@jamesrock/rockjs';
 
